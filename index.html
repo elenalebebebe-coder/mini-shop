@@ -1,0 +1,185 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Mini Shop</title>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 20px;
+      background: #101114;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 28px;
+    }
+    h1 { font-size: 25px; }
+    .logo { color: #20d6c2; font-weight: bold; }
+    .banner {
+      background: linear-gradient(135deg,#173d3b,#176b65);
+      border-radius: 20px;
+      padding: 25px;
+      margin-bottom: 25px;
+    }
+    .banner h2 { font-size: 25px; }
+    .banner p { color: #d0e8e5; }
+    .section-title { font-size: 20px; }
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 13px;
+    }
+    .card {
+      background: #1c1e23;
+      border-radius: 16px;
+      padding: 15px;
+    }
+    .picture {
+      height: 110px;
+      background: #292d34;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      font-size: 42px;
+    }
+    .price { color: #20d6c2; font-weight: bold; }
+    button {
+      width: 100%;
+      border: none;
+      padding: 12px;
+      border-radius: 10px;
+      background: #20d6c2;
+      color: #101114;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .bottom {
+      margin-top: 25px;
+      background: #1c1e23;
+      padding: 16px;
+      border-radius: 15px;
+      text-align: center;
+      color: #20d6c2;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">MINI SHOP</div>
+    <div>🛍️</div>
+  </header>
+
+  <div class="banner">
+    <h2>Добро пожаловать!</h2>
+    <p>Наш новый магазин прямо в Telegram.</p>
+  </div>
+
+  <h3 class="section-title">Демонстрационный каталог</h3>
+
+  <div class="grid">
+    <div class="card">
+      <div class="picture">☕</div>
+      <h3>Кружка</h3>
+      <p class="price">15 €</p>
+      <button onclick="add('Кружка')">Добавить</button>
+    </div>
+
+    <div class="card">
+      <div class="picture">📓</div>
+      <h3>Блокнот</h3>
+      <p class="price">10 €</p>
+      <button onclick="add('Блокнот')">Добавить</button>
+    </div>
+
+    <div class="card">
+      <div class="picture">👜</div>
+      <h3>Сумка</h3>
+      <p class="price">25 €</p>
+      <button onclick="add('Сумка')">Добавить</button>
+    </div>
+
+    <div class="card">
+      <div class="picture">📱</div>
+      <h3>Подставка</h3>
+      <p class="price">12 €</p>
+      <button onclick="add('Подставка')">Добавить</button>
+    </div>
+  </div>
+
+  <div class="bottom" id="cart">🛒 Корзина: 0 товаров</div>
+
+  <script>
+    const tg = window.Telegram?.WebApp;
+    tg?.ready();
+    tg?.expand();
+
+    let count = 0;
+
+    function add(name) {
+      count++;
+      document.getElementById('cart').textContent =
+        '🛒 Корзина: ' + count + ' товаров';
+      tg?.HapticFeedback?.impactOccurred('light');
+    }
+  </script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MINI SHOP</title>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<style>
+*{box-sizing:border-box}
+body{margin:0;padding:20px;background:#101114;color:white;font-family:Arial}
+header{display:flex;justify-content:space-between;margin-bottom:25px}
+.logo{color:#20d6c2;font-weight:bold;font-size:23px}
+.banner{background:linear-gradient(135deg,#173d3b,#176b65);padding:22px;border-radius:18px;margin-bottom:25px}
+h2{font-size:24px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+.card{background:#1c1e23;padding:13px;border-radius:16px}
+.picture{height:105px;background:#292d34;border-radius:12px;display:grid;place-items:center;font-size:40px}
+.price{color:#20d6c2;font-weight:bold}
+button{width:100%;padding:12px;border:0;border-radius:10px;background:#20d6c2;font-weight:bold}
+.cart{margin-top:22px;padding:17px;background:#1c1e23;border-radius:14px;color:#20d6c2;text-align:center}
+</style>
+</head>
+<body>
+<header><div class="logo">MINI SHOP</div><div>🛍️</div></header>
+<div class="banner">
+<h2>Добро пожаловать!</h2>
+<p>Наш магазин прямо в Telegram</p>
+</div>
+<h3>Каталог товаров</h3>
+<div class="grid">
+<div class="card"><div class="picture">☕</div><h3>Кружка</h3><p class="price">15 €</p><button onclick="add()">Добавить</button></div>
+<div class="card"><div class="picture">📓</div><h3>Блокнот</h3><p class="price">10 €</p><button onclick="add()">Добавить</button></div>
+<div class="card"><div class="picture">👜</div><h3>Сумка</h3><p class="price">25 €</p><button onclick="add()">Добавить</button></div>
+<div class="card"><div class="picture">📱</div><h3>Подставка</h3><p class="price">12 €</p><button onclick="add()">Добавить</button></div>
+</div>
+<div class="cart" id="cart">🛒 Корзина: 0 товаров</div>
+<script>
+let count=0;
+const tg=window.Telegram?.WebApp;
+tg?.ready();
+tg?.expand();
+function add(){
+count++;
+document.getElementById('cart').textContent='🛒 Корзина: '+count+' товаров';
+tg?.HapticFeedback?.impactOccurred('light');
+}
+</script>
+</body>
+</html>
+
